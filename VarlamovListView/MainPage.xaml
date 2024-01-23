@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VarlamovListView.MainPage">
+    <ScrollView>
+        <StackLayout Padding="10" 
+                     Spacing="15">
+            <Label Text="Тип процессора" />
+            <Entry x:Name="typeCPU"/>
+
+            <Label Text="Память" />
+            <Entry x:Name="memory"/>
+
+            <Label Text="HDD" />
+            <Entry x:Name="hdd" />
+
+            <Label Text="Видео" />
+            <Entry x:Name="video"/>
+
+            <Button Text="Добавить"
+                    Clicked="AddClick"/>
+            <ListView x:Name="hardwareList"
+                      Grid.Row="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding TypeCPU}"
+                                       FontSize="18"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Memory}"/>
+                                    <Label Text="{Binding HDD}"/>
+                                    <Label Text="{Binding Video}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

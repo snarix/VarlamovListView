@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VarlamovListView.Edit"
+             Title="Edit">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0"
+           x:Name="selectedText"
+           FontSize="24"/>
+
+        <ListView x:Name="hardwareList"
+                  Grid.Row="1"
+                  ItemSelected="hardwareList_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding TypeCPU}"
+                                   FontSize="18"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Memory}"/>
+                                <Label Text="{Binding HDD}"/>
+                                <Label Text="{Binding Video}"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackLayout Grid.Row="2"
+                     Padding="10"
+                     Spacing="5">
+            <Button Text="Редактировать"
+                    Clicked="EditClick"/>
+            <Button Text="Удалить"
+                    Clicked="RemoveClick"/>
+            <Button Text="Сохранить"
+                    Clicked="SaveClick"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>
