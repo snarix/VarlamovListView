@@ -6,15 +6,11 @@
     xmlns:local="clr-namespace:VarlamovListView"
     Shell.FlyoutBehavior="Disabled">
 
-    <TabBar>
-        <Tab>
-            <ShellContent Title="Главная страница"
-                          ContentTemplate="{DataTemplate local:MainPage}"
-                          Route="MainPage"/>
+
+
             <ShellContent Title="Страница просмотра"
-                          ContentTemplate="{DataTemplate local:Edit}"
-                          Route="Edit"/>
-        </Tab>
-    </TabBar>
+                          ContentTemplate="{DataTemplate local:Pass}"
+                          Route="Pass"/>
+
 
 </Shell>

@@ -23,9 +23,12 @@
                         <StackLayout>
                             <Label Text="{Binding TypeCPU}"
                                    FontSize="18"/>
+                            
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding Memory}"/>
+                                <Label Text=" Mb "/>
                                 <Label Text="{Binding HDD}"/>
+                                <Label Text="Gb "/>
                                 <Label Text="{Binding Video}"/>
                             </StackLayout>
                         </StackLayout>
@@ -37,12 +40,12 @@
         <StackLayout Grid.Row="2"
                      Padding="10"
                      Spacing="5">
-            <Button Text="Редактировать"
-                    Clicked="EditClick"/>
             <Button Text="Удалить"
                     Clicked="RemoveClick"/>
             <Button Text="Сохранить"
                     Clicked="SaveClick"/>
+            <Button Text="Загрузить"
+                    Clicked="LoadClick"/>
         </StackLayout>
     </Grid>
 </ContentPage>

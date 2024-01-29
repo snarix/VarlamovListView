@@ -1,11 +1,12 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Text.Json;
 
 namespace VarlamovListView;
 
 public partial class Edit : ContentPage
 {
-    public ObservableCollection<Hardware> Hardwares { get; set; }
+    public ObservableCollection<Hardware> Hardwares;
 
     public Edit()
     {
@@ -13,42 +14,37 @@ public partial class Edit : ContentPage
         Hardwares = new ObservableCollection<Hardware>();
         Hardwares.Add(new Hardware
         {
-            TypeCPU = "8 разрядный ",
-            Memory = "4Gb ",
-            HDD = "250Gb ",
+            TypeCPU = 8,
+            Memory = 4,
+            HDD = 250,
             Video = "Acer"
         });
 
         Hardwares.Add(new Hardware
         {
-            TypeCPU = "16 разрядный ",
-            Memory = "8Gb ",
-            HDD = "500Gb ",
+            TypeCPU = 16,
+            Memory = 8,
+            HDD = 500,
             Video = "Logitech"
         });
 
         Hardwares.Add(new Hardware
         {
-            TypeCPU = "32 разрядный ",
-            Memory = "16Gb ",
-            HDD = "1Tb ",
+            TypeCPU = 32,
+            Memory = 16,
+            HDD = 750,
             Video = "LG"
         });
 
         Hardwares.Add(new Hardware
         {
-            TypeCPU = "64 разрядный ",
-            Memory = "32Gb ",
-            HDD = "2Tb ",
+            TypeCPU = 64,
+            Memory = 32,
+            HDD = 1000,
             Video = "Bnq"
         });
         
         hardwareList.ItemsSource = Hardwares;
-    }
-   
-    public void RemoveHardware(Hardware hardware)
-    {
-        Hardwares.Remove(hardware);
     }
 
     private void RemoveClick(object sender, EventArgs e)
@@ -56,18 +52,26 @@ public partial class Edit : ContentPage
         Hardware hardware = (Hardware)hardwareList.SelectedItem;
         if (hardware != null) 
         {
-            RemoveHardware(hardware);
+            Hardwares.Remove(hardware);
         }
     }
 
-    private void EditClick(object sender, EventArgs e)
-    {
-
-    }
-
+    string mainDir = FileSystem.Current.AppDataDirectory;
     private void SaveClick(object sender, EventArgs e)
     {
+        string JsonString = JsonSerializer.Serialize(Hardwares);
+        StreamWriter sw = new StreamWriter(Path.Combine(mainDir, "hardwares.txt"));
+        sw.WriteLine(JsonString);
+        sw.Close();
+    }
 
+    private void LoadClick(object sender, EventArgs e)
+    {
+        StreamReader sw = new StreamReader(Path.Combine(mainDir, "hardwares.txt"));
+        string jsonString = sw.ReadLine();
+        Hardwares = JsonSerializer.Deserialize<ObservableCollection<Hardware>>(jsonString);
+        sw.Close();
+        hardwareList.ItemsSource = Hardwares;
     }
 
     private void hardwareList_ItemSelected(object sender, SelectedItemChangedEventArgs e)

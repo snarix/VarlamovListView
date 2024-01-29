@@ -17,15 +17,15 @@ namespace VarlamovListView
 
         private void AddClick(object sender, EventArgs e)
         {
-            Hardware newHardware = new Hardware
-            {
-                TypeCPU = typeCPU.Text,
-                Memory = memory.Text,
-                HDD = hdd.Text,
-                Video = video.Text
-            };
+            //Hardware newHardware = new Hardware
+            //{
+            //    TypeCPU = typeCPU.Text,
+            //    Memory = memory.Text,
+            //    HDD = hdd.Text,
+            //    Video = video.Text
+            //};
 
-            Hardwares.Add(newHardware);
+            //Hardwares.Add(newHardware);
 
             typeCPU.Text = string.Empty;
             memory.Text = string.Empty;

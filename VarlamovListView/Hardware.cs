@@ -8,9 +8,9 @@ namespace VarlamovListView
 {
     public class Hardware
     {
-        public string TypeCPU { get; set; }
-        public string Memory { get; set; }
-        public string HDD { get; set; }
+        public int TypeCPU { get; set; }
+        public int Memory { get; set; }
+        public int HDD { get; set; }
         public string Video { get; set; }
     }
 }
