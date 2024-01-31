@@ -32,7 +32,7 @@ public partial class Pass : ContentPage
         {
             AppShell.Current.CurrentItem = new Edit();
         }
-        //}
+        //}hh
     }
 
     private void DeleteBtn(object sender, EventArgs e)
