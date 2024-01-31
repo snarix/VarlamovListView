@@ -30,7 +30,7 @@ namespace VarlamovListView
             }
          
 
-
+            //cfb
 
             typeCPU.Text = string.Empty;
             memory.Text = string.Empty;
