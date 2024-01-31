@@ -40,6 +40,10 @@
         <StackLayout Grid.Row="2"
                      Padding="10"
                      Spacing="5">
+            <Button Text="Добавить"
+                    Clicked="AddClick"/>
+            <Button Text="Редактировать"
+                    Clicked="EditClick"/>
             <Button Text="Удалить"
                     Clicked="RemoveClick"/>
             <Button Text="Сохранить"

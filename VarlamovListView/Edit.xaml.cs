@@ -83,4 +83,14 @@ public partial class Edit : ContentPage
             selectedText.Text = selectedItem.Video + " " + selectedItem.TypeCPU;
         }
     }
+
+    async private void AddClick(object sender, EventArgs e)
+    {
+        await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
+    }
+
+    async private void EditClick(object sender, EventArgs e)
+    {
+        
+    }
 }

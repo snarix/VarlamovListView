@@ -23,25 +23,18 @@ public partial class Pass : ContentPage
 
         //if (count == pass.Length)
         //{
+        if(str != null)
+        {
+            lblOutput.Text += str;
+        }
+        
         if (lblOutput.Text == "123")
         {
             AppShell.Current.CurrentItem = new Edit();
         }
-        else if(str != null)
-        {
-            lblOutput.Text += str;
-        }
-
-        else
-        {
-            DisplayAlert("Suka", "Blyad", "Nah");
-        }
         //}
-
-
-
-
     }
+
     private void DeleteBtn(object sender, EventArgs e)
     {
         if (lblOutput.Text != null && lblOutput.Text != "")
