@@ -5,7 +5,7 @@
         public App()
         {
             InitializeComponent();
-
+            //edrg
             MainPage = new AppShell();
         }
     }

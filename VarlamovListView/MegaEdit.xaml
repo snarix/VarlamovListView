@@ -20,6 +20,7 @@
         
         <ListView x:Name="hardwareList"
               Grid.Row="1">
+              >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
