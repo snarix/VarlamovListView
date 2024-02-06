@@ -6,4 +6,12 @@ public partial class MegaEdit : ContentPage
 	{
 		InitializeComponent();
 	}
+    private void EditClick(object sender, EventArgs e)
+    {
+
+    }
+    private async void EndClick(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
 }

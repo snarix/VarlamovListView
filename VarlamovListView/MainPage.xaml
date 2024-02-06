@@ -19,24 +19,9 @@
 
             <Button Text="Добавить"
                     Clicked="AddClick"/>
-            <ListView x:Name="hardwareList"
-                      Grid.Row="1">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding TypeCPU}"
-                                       FontSize="18"/>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Memory}"/>
-                                    <Label Text="{Binding HDD}"/>
-                                    <Label Text="{Binding Video}"/>
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <Button Text="Отмена"
+                    Clicked="EndClick"/>
+            
         </StackLayout>
     </ScrollView>
 </ContentPage>

@@ -1,18 +1,18 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+
 using System.Text.Json;
 
 namespace VarlamovListView;
 
 public partial class Edit : ContentPage
 {
-    public ObservableCollection<Hardware> Hardwares;
 
     public Edit()
     {
         InitializeComponent();
-        Hardwares = new ObservableCollection<Hardware>();
-        Hardwares.Add(new Hardware
+        Value.hardwares = new ObservableCollection<Hardware>();
+        Value.hardwares.Add(new Hardware
         {
             TypeCPU = 8,
             Memory = 4,
@@ -20,7 +20,7 @@ public partial class Edit : ContentPage
             Video = "Acer"
         });
 
-        Hardwares.Add(new Hardware
+        Value.hardwares.Add(new Hardware
         {
             TypeCPU = 16,
             Memory = 8,
@@ -28,7 +28,7 @@ public partial class Edit : ContentPage
             Video = "Logitech"
         });
 
-        Hardwares.Add(new Hardware
+        Value.hardwares.Add(new Hardware
         {
             TypeCPU = 32,
             Memory = 16,
@@ -36,15 +36,20 @@ public partial class Edit : ContentPage
             Video = "LG"
         });
 
-        Hardwares.Add(new Hardware
+        Value.hardwares.Add(new Hardware
         {
             TypeCPU = 64,
             Memory = 32,
             HDD = 1000,
             Video = "Bnq"
         });
-        
-        hardwareList.ItemsSource = Hardwares;
+
+        hardwareList.ItemsSource = Value.hardwares;
+    }
+
+    protected virtual void OnAppearing()
+    {
+        hardwareList.ItemsSource = Value.hardwares;
     }
 
     private void RemoveClick(object sender, EventArgs e)
@@ -52,26 +57,26 @@ public partial class Edit : ContentPage
         Hardware hardware = (Hardware)hardwareList.SelectedItem;
         if (hardware != null) 
         {
-            Hardwares.Remove(hardware);
+            Value.hardwares.Remove(hardware);
         }
     }
 
     string mainDir = FileSystem.Current.AppDataDirectory;
     private void SaveClick(object sender, EventArgs e)
     {
-        string JsonString = JsonSerializer.Serialize(Hardwares);
-        StreamWriter sw = new StreamWriter(Path.Combine(mainDir, "hardwares.txt"));
+        string JsonString = JsonSerializer.Serialize(Value.hardwares);
+        StreamWriter sw = new StreamWriter(Path.Combine(mainDir, "hardwaares.txt"));
         sw.WriteLine(JsonString);
         sw.Close();
     }
 
     private void LoadClick(object sender, EventArgs e)
     {
-        StreamReader sw = new StreamReader(Path.Combine(mainDir, "hardwares.txt"));
+        StreamReader sw = new StreamReader(Path.Combine(mainDir, "hardwaares.txt"));
         string jsonString = sw.ReadLine();
-        Hardwares = JsonSerializer.Deserialize<ObservableCollection<Hardware>>(jsonString);
+        Value.hardwares = JsonSerializer.Deserialize<ObservableCollection<Hardware>>(jsonString);
         sw.Close();
-        hardwareList.ItemsSource = Hardwares;
+        hardwareList.ItemsSource = Value.hardwares;
     }
 
     private void hardwareList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -86,11 +91,11 @@ public partial class Edit : ContentPage
 
     async private void AddClick(object sender, EventArgs e)
     {
-        await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
+        await Navigation.PushAsync(new MainPage());
     }
 
     async private void EditClick(object sender, EventArgs e)
     {
-        
+        await Navigation.PushAsync(new MegaEdit());
     }
 }
